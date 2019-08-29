@@ -25,39 +25,46 @@
             border-bottom:1px solid black;
             text-align:center;
         }
+        .show{
+            display:block;
+        }
+        .hide{
+            display:none;
+        }
     </style>
 </head>
 <body>
 <div>
     <span>省份</span>
-    <ul>
+    <ul class="hide">
         <li>吉林</li>
         <li>黑龙江</li>
         <li>江西</li>
         <li>湖北</li>
     </ul>
     <span>省份</span>
-    <ul>
+    <ul class="hide">
         <li>吉林</li>
         <li>黑龙江</li>
         <li>江西</li>
         <li>湖北</li>
     </ul>
     <span>省份</span>
-    <ul>
+    <ul class="hide">
         <li>吉林</li>
         <li>黑龙江</li>
         <li>江西</li>
         <li>湖北</li>
     </ul>
     <span>省份</span>
-    <ul>
+    <ul class="hide">
         <li>吉林</li>
         <li>黑龙江</li>
         <li>江西</li>
         <li>湖北</li>
-    </ul>    <span>省份</span>
-    <ul>
+    </ul>
+    <span>省份</span>
+    <ul class="hide">
         <li>吉林</li>
         <li>黑龙江</li>
         <li>江西</li>
@@ -65,5 +72,13 @@
     </ul>
 
 </div>
-
+<script>
+    var aUl = document.getElementsByTagName("ul");
+    console.log(aUl);
+    var aSpan = document.getElementsByTagName("span");
+    console.log(aSpan);
+    function toggle(){
+        if this
+    }
+</script>
 </body>
