@@ -36,55 +36,78 @@
             text-align:center;
             font-size:30px;
         }
-        .table-head ul{
-            margin:0 auto;
-        }
-        .table-head ul{
-            width:728px;
-            margin:0 auto;
-        }
-        .table-head ul li{
-            float:left;
-            width:50px;
-            border:1px solid black;
-            text-align:center;
-        }
     </style>
 </head>
 <body>
 <div class="con">
     <div class="selector">
         <span>地区选择:</span>
-        <select name="relign">
-            <option value="">华东</option>
-            <option value="">华北</option>
-            <option value="">华南</option>
+        <select name="relign" id="region">
+            <option value=""hidden="ture"></option>
+            <option value="华东">华东</option>
+            <option value="华北">华北</option>
+            <option value="华南">华南</option>
         </select>
     </div>
     <div class="table">
         <div class="title">
             <h5>数据报表</h5>
         </div>
-        <div class="table-head">
-            <ul>
-                <li>地区</li>
-                <li>产品</li>
-                <li>1月</li>
-                <li>2月</li>
-                <li>3月</li>
-                <li>4月</li>
-                <li>5月</li>
-                <li>6月</li>
-                <li>7月</li>
-                <li>8月</li>
-                <li>9月</li>
-                <li>10月</li>
-                <li>11月</li>
-                <li>12月</li>
-            </ul>
+        <div id="table-wrapper">
         </div>
     </div>
 </div>
 <script src="js/pdata.js"></script>
+<script>
+    var oRegion = document.getElementById("region");
+    var tableDiv = document.getElementById("table-wrapper");
+
+    oRegion.onchange = function(){
+        getTable();
+    };
+    function getData(){
+        var arr = new Array();
+        var oRegionText = oRegion.value;
+        for(var i=0;i<sourceData.length;i++){
+            if(sourceData[i].region ==  oRegionText){
+                arr.push(sourceData[i]);
+            }
+        }
+        console.log(arr);
+        return arr;
+    }
+    function getTable(){
+        tableDiv.removeChild(tableDiv.childNodes[0]);
+        var table = document.createElement("table");
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var header = table.createTHead();
+        var tr0=header.insertRow(0);
+        for (var i = 0; i < headTable.length; i++) {
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+        var arr=getData();
+        for(var i=0;i<arr.length;i++){
+            var tr=table.insertRow(table.rows.length);
+
+            var td=tr.insertCell(0);
+            td.innerHTML=arr[i].product;
+
+            var td=tr.insertCell(1);
+            td.innerHTML=arr[i].region;
+
+            for(var j=0;j<12;j++){
+                var td=tr.insertCell(j+2);
+                td.innerHTML=arr[i].sale[j];
+            }
+
+
+        }
+        //把生成的HTML内容赋给table - wrapper
+        document.querySelector("#table-wrapper").appendChild(table);
+    }
+
+</script>
 </body>
 </html>
