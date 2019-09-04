@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<body>
+<canvas id="stage"></canvas>
+<script>
+    window.onload = function draw(){
+        var canvas = document.getElementById("stage");
+        var ctx = canvas.getContext("2d");
+
+        ctx.beginPath();
+        ctx.moveTo(20,50);
+        ctx.lineTo(100,100);
+        ctx.lineTo(100,0);
+        ctx.fill();
+    }
+</script>
+</body>
+</html>

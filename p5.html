@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box>div{
+            display:inline-block;
+            width:150px;
+            height:50px;
+            margin:5px;
+            line-height:50px;
+            text-align:center;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        var oBox = document.getElementById("box");
+        var str = '';
+        function caltable(){
+            for(var i=1; i <9; i++){
+                for(var j=1 ; j<=i;j++){
+                    var txt = i + "*" + j +"=" + i*j;
+                    str +='<div>'+ txt +"</div>";
+                }
+                    str += '<br/>';
+            }
+            oBox.innerHTML = str;
+        }
+        caltable();
+    </script>
+</body>
+</html>
