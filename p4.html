@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+.con{
+    position:relative;
+    width:200px;
+    height:80px;
+    margin-top:50px;
+}
+.title{
+        width:200px;
+        height:30px;
+        border:1px solid black;
+    }
+    .con:hover #t{
+        display:block;
+    }
+    .con ul{
+        display:none;
+        position:absolute;
+        top:30px;
+        width:200px;
+        height:600px;
+        border:1px solid red;
+    }
+    ul li:hover{
+        background-color:yellow;
+    }
+</style>
+<body>
+<div class="con">
+    <div class="title">数字</div>
+    <ul id="t">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+</body>
+</html>

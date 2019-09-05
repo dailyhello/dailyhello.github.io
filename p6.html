@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .box span{
+            display:block;
+            line-height:30px;
+            width:150px;
+            background-color:red;
+            border:1px solid red;
+        }
+        ul{
+            height:30px;
+            width:150px;
+            overflow:hidden;
+        }
+        ul li{
+            width:150px;
+            height:30px;
+            text-align:center;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <span>动物</span>
+        <li>猫</li>
+        <li>狗</li>
+        <li>牛</li>
+        <li>马</li>
+    </ul>
+    <ul>
+        <span>动物</span>
+        <li>猫</li>
+        <li>狗</li>
+        <li>牛</li>
+        <li>马</li>
+    </ul>
+    <ul>
+        <span>动物</span>
+        <li>猫</li>
+        <li>狗</li>
+        <li>牛</li>
+        <li>马</li>
+    </ul>
+    <ul>
+        <span>动物</span>
+        <li>猫</li>
+        <li>狗</li>
+        <li>牛</li>
+        <li>马</li>
+    </ul>
+</div>
+<script>
+    var aUl   = document.getElementsByTagName("ul");
+
+
+    function getlong() {
+        for (var i = 0; i < aUl.length; i++) {
+            aUl[i].bool =1;
+            aUl[i].onclick  = function(){
+                    if(this.bool){
+                        this.style.height = "auto";
+                        this.bool = !this.bool;
+                    }
+                    else{
+                        this.style.height  = '30px';
+                        this.bool = !this.bool;
+                    }
+                }
+
+        }}
+    getlong();
+</script>
+</body>
+</html>
