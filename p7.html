@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品排序</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .contant{
+            width:1000px;
+            height:1000px;
+            border:1px solid darkgrey;
+            margin:20px auto;
+        }
+        .nav{
+            width:100%;
+            height:60px;
+            background-color: #b5c7cc;
+        }
+        .nav li{
+            position:relative;
+            float:left;
+            padding:0 30px;
+            border-right:1px solid white;
+            line-height:60px;
+            text-align:center;
+            cursor:pointer;
+        }
+
+        #sort{
+            display:none;
+            position:absolute;
+            top:0;
+            left:0;
+            width:100px;
+            height:100px;
+            background-color: #cfd3d9;
+            font-size:10px;
+        }
+        #sort>span{
+            display:block;
+            line-height:50px;
+        }
+        #pro ul li{
+            float:left;
+            width:230px;
+            height:250px;
+            margin:5px;
+            border:1px solid black;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="contant">
+    <div class="nav">
+        <ul>
+            <li>流行</li>
+            <li>热销</li>
+            <li>上新</li>
+            <li id="price">
+                <span>价格</span>
+                <div id="sort">
+                    <span>价格从高到低</span>
+                    <span>价格从低到高</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="pro">
+        <ul>
+            <li>
+                <p>红玫瑰</p>
+                <span>$100</span>
+            </li>
+            <li>
+                <p>黄玫瑰</p>
+                <span>$110</span>
+            </li>
+            <li>
+                <p>绿玫瑰</p>
+                <span>$500</span>
+            </li>
+            <li>
+                <p>紫玫瑰</p>
+                <span>$104</span>
+            </li>
+            <li>
+                <p>黑玫瑰</p>
+                <span>$10</span>
+            </li>
+            <li>
+                <p>花玫瑰</p>
+                <span>$369</span>
+            </li>
+            <li>
+                <p>蓝玫瑰</p>
+                <span>$940</span>
+            </li>
+            <li>
+                <p>假玫瑰</p>
+                <span>$1100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    // 解 设
+    var oPrice = document.getElementById("price"),
+         oP     = oPrice.getElementsByTagName("span")[0],
+         oSort  = document.getElementById("sort"),
+         oPP    = oSort.getElementsByTagName("span"),
+         oUl    = document.getElementById('pro').getElementsByTagName('ul')[0],
+         aP     = oUl.getElementsByTagName('p'),
+         aSpan  = oUl.getElementsByTagName('span'),
+         arr    = [];
+         length = aP.length;
+
+    // 下拉菜单的开关
+
+    oPrice.onmouseenter = function(){
+        oSort.style.display = 'block';
+    };
+    oPrice.onmouseleave = function(){
+        oSort.style.display = 'none';
+    };
+
+    // 点击显示价格排序方式
+    for(var i = 0 ;i<2; i++){
+        (function(i){ oPP[i].onclick = function(){
+            oP.innerHTML = this.innerHTML;
+            oSort.style.display ='none';
+            inline(i);
+        }})(i)
+    }
+    // 获取数据
+    for(var i = 0; i<length; i++){
+        arr[i] = {
+            title:aP[i].innerHTML,
+            price:aSpan[i].innerHTML,
+            num:aSpan[i].innerHTML.substring(1)-0
+        }
+    }
+    // 按照规则重新创建数据
+    function inline(x){
+        arr.sort(
+            x?
+                function(a,b){return a.num - b.num}:
+                function(a,b){return b.num - a.num}
+        )
+        var str = '';
+        oUl.innerHTML = '';
+        for(var i = 0; i<length; i++){
+        str +='<li>'+'<p>'+arr[i].title + '</p>'+'<span>'+arr[i].price+'</span>'+'</li>';
+        }
+        oUl.innerHTML = str;
+    }
+</script>
+</body>
+</html>
