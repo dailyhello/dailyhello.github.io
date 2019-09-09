@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+        .con{
+            margin:20px auto;
+            width:200px;
+            height:150px;
+            text-align:center;
+        }
+        #num{
+            color:red;
+            font-size:22px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <p>倒计时<span id="num">5</span></p>
+</div>
+<script>
+    var oNum = document.getElementById('num');
+
+    (function timer(){
+        setTimeout(function(){
+            var count = oNum.innerHTML;
+            if(oNum.innerHTML >= 1) {
+                count--;
+                oNum.innerHTML = count;
+                console.log(oNum.innerHTML);
+            timer();
+        }
+        else{
+            location.href ='www.baidu.com';
+            }},1000)
+    })();
+</script>
+</body>
+</html>
